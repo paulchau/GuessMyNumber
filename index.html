@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guess My Number</title>
+  </head>
+  <body>
+
+    <h1>Choose a number</h1>
+	<table style="margin: auto;">
+		<tr>
+			<td id="low">
+			</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td id="up">
+			</td>
+		</tr>
+	</table>
+	<script>
+		var lower = 1;
+		var upper = 100;
+		var target = Math.floor((Math.random() * 100) + 1);
+		document.getElementById("low").innerHTML = lower.toString();
+		document.getElementById("up").innerHTML = upper.toString();
+	</script>
+	<form style="margin: auto;">
+		<input type="text" name="number" id="number">
+		<button onclick="check()">Enter</button>
+	</form>
+	<script>
+		function check(){
+			var input = document.getElementById("number").value;
+			if (isNaN(input)){
+				window.alert("Please input a number");
+				document.getElementById("number").value = "";
+			}else{
+				if ((input > lower) && (input < upper)){
+					if (input == target){
+						window.alert("You get the number");
+					}else{
+						if (input < target){
+							lower = input;
+						}else{
+							upper = input;
+						}
+						document.getElementById("low").innerHTML = lower.toString();
+						document.getElementById("up").innerHTML = upper.toString();
+						document.getElementById("number").value = "";
+					}
+				}else{
+					window.alert("Out of bounds!!!!");
+					document.getElementById("number").value = "";
+				}	
+			}
+		}
+	</script>
+	<div id="display"></div>
+  </body>
+</html>
